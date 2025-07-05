@@ -1,0 +1,1323 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathew Ogieva - Geophysicist & Business Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0a0a0f;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Animated Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0f 100%);
+        }
+
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            25% {
+                transform: translateX(-10px) translateY(-10px);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateX(10px) translateY(10px);
+                opacity: 0.9;
+            }
+            75% {
+                transform: translateX(-5px) translateY(15px);
+                opacity: 0.7;
+            }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            33% {
+                transform: translateY(-30px) rotate(120deg) scale(1.1);
+                opacity: 0.8;
+            }
+            66% {
+                transform: translateY(30px) rotate(240deg) scale(0.9);
+                opacity: 0.4;
+            }
+        }
+
+        .particle:nth-child(1) { width: 4px; height: 4px; top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; top: 60%; left: 85%; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; top: 40%; left: 70%; animation-delay: 4s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; top: 80%; left: 15%; animation-delay: 1s; }
+        .particle:nth-child(5) { width: 7px; height: 7px; top: 15%; left: 90%; animation-delay: 3s; }
+        .particle:nth-child(6) { width: 4px; height: 4px; top: 70%; left: 50%; animation-delay: 5s; }
+        .particle:nth-child(7) { width: 6px; height: 6px; top: 30%; left: 30%; animation-delay: 1.5s; }
+        .particle:nth-child(8) { width: 5px; height: 5px; top: 90%; left: 75%; animation-delay: 2.5s; }
+
+        /* Fixed Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            padding: 15px 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: block;
+            min-width: 80px;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        nav a.active {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+            color: white;
+            border-color: rgba(102, 126, 234, 0.7);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 100vh;
+            scroll-margin-top: 80px;
+        }
+
+        .section h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        /* Home Section */
+        #home {
+            text-align: center;
+            padding-top: 120px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .profile-container {
+            margin-bottom: 60px;
+        }
+
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto 40px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 4px;
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            border-radius: 50%;
+            z-index: -1;
+            animation: borderRotate 3s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 2s ease-in-out infinite alternate;
+            position: relative;
+        }
+
+        @keyframes textGlow {
+            from {
+                filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+            }
+            to {
+                filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8));
+            }
+        }
+
+        .title {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* Animated Text Sections */
+        .animated-section {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .animated-section h3 {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .typewriter {
+            font-size: 1.3rem;
+            font-weight: 600;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .typewriter-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: #667eea;
+            margin-left: 3px;
+            width: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .description {
+            max-width: 900px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .description::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: left 0.6s;
+        }
+
+        .description:hover::before {
+            left: 100%;
+        }
+
+        .description:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .social-link:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .social-link:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+
+        /* Content Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: left 0.6s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .card p, .card li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+        }
+
+        .card a {
+            color: #f093fb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .card a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, #764ba2, #f093fb);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            padding-left: 80px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 21px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: 3px solid #0a0a0f;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+            }
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+
+        .timeline-date {
+            color: #f093fb;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-org {
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .contact-item h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            color: rgba(255, 255, 255, 0.9);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+            transform: translateY(-2px);
+        }
+
+        /* Awards Grid */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .award-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .award-item::before {
+            content: '🏆';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .award-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .award-title {
+            color: #f093fb;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .award-org {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .award-year {
+            color: #667eea;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 0;
+            }
+            
+            nav ul {
+                gap: 15px;
+                padding: 0 10px;
+            }
+            
+            nav a {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                min-width: 70px;
+            }
+            
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .profile-image {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .section {
+                padding: 90px 15px 40px;
+            }
+            
+            .card-grid, .skills-grid, .awards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .name {
+                font-size: 2rem;
+            }
+            
+            .social-links {
+                gap: 15px;
+            }
+            
+            .social-link {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+                min-width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Animated Background -->
+    <div class="background">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Fixed Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#research" class="nav-link">Research</a></li>
+            <li><a href="#publications" class="nav-link">Publications</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section id="home" class="section">
+        <div class="profile-container">
+            <div class="profile-image">
+                <img src="photo1.jpg" alt="Mathew Ogieva">
+            </div>
+            
+            <h1 class="name">Mathew Ogieva</h1>
+            <p class="title">Geophysicist & Business Analyst</p>
+            
+            <!-- Animated Interested In Section -->
+            <div class="animated-section">
+                <h3>Specialized in</h3>
+                <div class="typewriter">
+                    <span class="typewriter-text" id="interested-text"></span>
+                    <span class="cursor">&nbsp;</span>
+                </div>
+            </div>
+
+            <!-- Animated Skills Section -->
+            <div class="animated-section">
+                <h3>Expert in</h3>
+                <div class="typewriter">
+                    <span class="typewriter-text" id="skills-text"></span>
+                    <span class="cursor">&nbsp;</span>
+                </div>
+            </div>
+
+            <!-- Animated Awards Section -->
+            <div class="animated-section">
+                <h3>Recent Achievement</h3>
+                <div class="typewriter">
+                    <span class="typewriter-text" id="awards-text"></span>
+                    <span class="cursor">&nbsp;</span>
+                </div>
+            </div>
+            
+            <div class="description">
+                Accomplished geophysicist and business analyst with dual Master's degrees in Applied Physics and Geophysics. Currently serving as Technical Data Specialist at Henkel Corporation, combining advanced scientific research with practical business applications. Proven track record in DNA nanotechnology research, oil & gas exploration, and educational excellence with multiple published papers and prestigious awards.
+            </div>
+            
+            <div class="social-links">
+                <a href="mailto:mathew.ogieva@email.com" class="social-link" title="Email">✉</a>
+                <a href="https://linkedin.com/in/mathew-ogieva" class="social-link" title="LinkedIn">💼</a>
+                <a href="https://github.com/mathew-ogieva" class="social-link" title="GitHub">🔗</a>
+                <a href="https://scholar.google.com/citations?user=mathew-ogieva" class="social-link" title="Google Scholar">🎓</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="section">
+        <h1>Professional Experience</h1>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">January 2025 - Present</div>
+                    <div class="timeline-title">Technical Data Specialist</div>
+                    <div class="timeline-org">Henkel Corporation (via Tech Observer)</div>
+                    <p>Processing and managing large datasets using SAP and Excel. Managing SAP Material Master Data, conducting root cause analysis, and providing training on data governance policies. Harmonizing supplier data and collaborating with cross-functional teams to optimize database systems.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">July 2024 - January 2025</div>
+                    <div class="timeline-title">Science and Mathematics Teacher</div>
+                    <div class="timeline-org">Icon Preparatory School Cleveland</div>
+                    <p>Developed and implemented engaging lesson plans aligned with curriculum standards. Fostered positive classroom environment encouraging student participation and collaboration. Assessed student progress through various methods while managing effective classroom behavior.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">August 2022 - June 2024</div>
+                    <div class="timeline-title">Graduate Teaching Assistant</div>
+                    <div class="timeline-org">Cleveland State University - Department of Physics</div>
+                    <p>Led teaching assistant roles for introductory algebra and calculus-based physics laboratories. Conducted experiment demonstrations emphasizing safety measures. Set up and utilized advanced equipment including SEM, oscilloscopes, and laser optics materials.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">August 2022 - May 2024</div>
+                    <div class="timeline-title">Graduate Research Assistant</div>
+                    <div class="timeline-org">Cleveland State University - Physics Department</div>
+                    <p>Performed kinetic Monte Carlo simulations to characterize dynamics of random walkers. Conducted advanced optics experiments and scanning electron microscopy projects. Researched DNA Walker speed improvement (over 450%) through innovative DNA Origami designs using Python, MATLAB, and VMD.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">April 2019 - August 2022</div>
+                    <div class="timeline-title">Data Analyst / Research Analyst</div>
+                    <div class="timeline-org">BVS Professional Services - Advisory Department</div>
+                    <p>Leveraged software to analyze data and improve organizational processes for multiple companies. Managed software development cycle, negotiated contracts, and created business requirements. Prepared sales forecasts and led cross-functional teams throughout product lifecycle.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">May 2012 - November 2015</div>
+                    <div class="timeline-title">Geoscientist</div>
+                    <div class="timeline-org">Ikon Science - Multi-Client Department</div>
+                    <p>Provided technical support on projects for major oil and gas companies. Analyzed geophysical, geological, petrophysical, and sedimentology data. Performed well ties, tuning analysis, and AVO modeling using advanced geophysical software and techniques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH SECTION -->
+    <section id="research" class="section">
+        <h1>Research & Projects</h1>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3>DNA Origami Motifs for Fast Localized Communication</h3>
+                <p>Breakthrough research in DNA nanotechnology developing innovative designs for efficient signal transport at the nanoscale. Achieved over 450% improvement in DNA Walker speed with potential applications in drug delivery and molecular transportation.</p>
+                <p><strong>Tools:</strong> Python, MATLAB, VMD, Cadnano</p>
+                <p><strong>Impact:</strong> Published in Scientific Reports 2025</p>
+            </div>
+            
+            <div class="card">
+                <h3>Anisotropy in Shales - AVO Analysis</h3>
+                <p>Comprehensive study analyzing anisotropy in shales of the UK Continental Shelf and its implications in AVO analysis and modeling. Independent research contributing to improved hydrocarbon exploration techniques.</p>
+                <p><strong>Application:</strong> Oil & Gas Exploration</p>
+                <p><strong>Published:</strong> Exploration Geophysics 2024</p>
+            </div>
+            
+            <div class="card">
+                <h3>Quantum Algorithms for Health Optimization</h3>
+                <p>Exploration of Variational Quantum Eigensolver (VQE) applications in health and medicine resource optimization. Cutting-edge research at the intersection of quantum computing and healthcare.</p>
+                <p><strong>Field:</strong> Quantum Computing & Healthcare</p>
+            </div>
+            
+            <div class="card">
+                <h3>Multi-Client Rock Physics Studies</h3>
+                <p>Led comprehensive rock physics and geopressure studies for major oil companies including Shell, BP, and Nexen. Analyzed 41+ wells across West of Shetland and Central North Sea regions.</p>
+                <p><strong>Clients:</strong> Shell, BP, Nexen, Apache, Premier Oil</p>
+                <p><strong>Impact:</strong> Enhanced reservoir characterization</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PUBLICATIONS SECTION -->
+    <section id="publications" class="section">
+        <h1>Publications & Presentations</h1>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3>Recent Publications (2024-2025)</h3>
+                <ul>
+                    <li><strong>Enhancing The Speed of DNA Walkers Through Soft Confinement</strong> - Scientific Reports 15, 9450 (2025)</li>
+                    <li><strong>Anisotropy in shale and its impact on AVO modelling</strong> - Exploration Geophysics (2024)</li>
+                    <li><strong>Interference Patterns and Optical Index</strong> - TIJER, Vol 12(3) (2025)</li>
+                    <li><strong>Evaluation of overburden protective capacity</strong> - Ife Journal of Science vol. 27(1) (2025)</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>Conference Presentations</h3>
+                <ul>
+                    <li><strong>DNA Origami Motifs for Fast Localized Communication</strong> - APS March Meeting 2024, Minneapolis</li>
+                    <li><strong>DNA Origami Motifs for Fast Localized Communication</strong> - APS Eastern Great Lakes Section 2023</li>
+                    <li><strong>Rock Property Analysis Revisited</strong> - 8th Petroleum Geology Conference 2015, London</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>Peer Review Activities</h3>
+                <p>Active reviewer for International Journal of Research and Scientific Innovation (IJRSI) and International Journal of Environment and Waste Management (IJEWM). Reviewed 6+ papers covering geoscience, materials science, and environmental topics.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Judging Activities</h3>
+                <p>Served as Grand Award Judge at 75th Regeneron ISEF (2025) and multiple state science fairs. Evaluated 120+ projects across Earth & Environmental Science, Physics, and Astronomy categories.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+        <h1>Technical Skills & Expertise</h1>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Programming & Software</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">LaTeX</span>
+                    <span class="skill-tag">SAS</span>
+                    <span class="skill-tag">R</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Data Analysis & Visualization</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">STATA</span>
+                    <span class="skill-tag">Origin</span>
+                    <span class="skill-tag">Data Mining</span>
+                    <span class="skill-tag">Statistical Analysis</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Geophysics & Petroleum</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Petrel</span>
+                    <span class="skill-tag">RokDoc</span>
+                    <span class="skill-tag">PetroView</span>
+                    <span class="skill-tag">MapInfo</span>
+                    <span class="skill-tag">Seismic Analysis</span>
+                    <span class="skill-tag">Rock Physics</span>
+                    <span class="skill-tag">AVO Modeling</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Molecular Simulation</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">VMD</span>
+                    <span class="skill-tag">NAMD</span>
+                    <span class="skill-tag">Cadnano</span>
+                    <span class="skill-tag">oxDNA</span>
+                    <span class="skill-tag">Ovito</span>
+                    <span class="skill-tag">OxView</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Business & Management</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">SAP</span>
+                    <span class="skill-tag">MS Project</span>
+                    <span class="skill-tag">Agile/Scrum</span>
+                    <span class="skill-tag">JIRA</span>
+                    <span class="skill-tag">Process Optimization</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>AI & Machine Learning</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">Text Evaluation</span>
+                    <span class="skill-tag">AI-Assisted Research</span>
+                    <span class="skill-tag">Monte Carlo Simulation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+        <h1>Contact & Education</h1>
+        
+        <!-- Contact Info -->
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h3>Professional Email</h3>
+                <p>mathew.ogieva@email.com</p>
+            </div>
+            
+            <div class="contact-item">
+                <h3>Location</h3>
+                <p>Cleveland, OH, USA</p>
+            </div>
+            
+            <div class="contact-item">
+                <h3>Current Position</h3>
+                <p>Technical Data Specialist</p>
+                <p>Henkel Corporation</p>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <h2 style="text-align: center; margin: 50px 0 30px 0; color: #667eea;">Education</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Master of Science in Applied Physics</h3>
+                <p><strong>Cleveland State University</strong> (2022-2024)</p>
+                <p><strong>GPA:</strong> 3.67/4.00</p>
+                <p><strong>Research:</strong> DNA Origami Motifs, DNA Walker Speed Enhancement</p>
+                <p><strong>Advisors:</strong> Prof. Sebastian Sensale, Prof. Petru Fodor</p>
+            </div>
+            
+            <div class="card">
+                <h3>Master of Science in Geophysics</h3>
+                <p><strong>University of Leeds, UK</strong> (2011-2012)</p>
+                <p><strong>GPA:</strong> 3.40/4.00</p>
+                <p><strong>Dissertation:</strong> Analysis of shales of the UKCS and its implications in AVO analysis</p>
+                <p><strong>Advisors:</strong> Prof. Graham Stuart, Dr. Chris Green</p>
+            </div>
+            
+            <div class="card">
+                <h3>Bachelor of Science in Applied Physics</h3>
+                <p><strong>University of Lagos, Nigeria</strong> (2003-2008)</p>
+                <p><strong>GPA:</strong> 4.53/5.00 (First Class Honors)</p>
+                <p><strong>Recognition:</strong> Best Graduating Student 2007</p>
+                <p><strong>Dissertation:</strong> Electrical resistivity techniques in groundwater evaluation</p>
+            </div>
+        </div>
+
+        <!-- Awards Section -->
+        <h2 style="text-align: center; margin: 50px 0 30px 0; color: #667eea;">Awards & Recognition</h2>
+        <div class="awards-grid">
+            <div class="award-item">
+                <div class="award-title">Division of Biological Physics Travel Award</div>
+                <div class="award-org">American Physical Society (APS)</div>
+                <div class="award-year">2024</div>
+            </div>
+            
+            <div class="award-item">
+                <div class="award-title">Graduate Summer Research Award</div>
+                <div class="award-org">Cleveland State University</div>
+                <div class="award-year">2023-2024</div>
+            </div>
+            
+            <div class="award-item">
+                <div class="award-title">NDDC Postgraduate Scholarship</div>
+                <div class="award-org">Niger Delta Development Commission</div>
+                <div class="award-year">2010-2011</div>
+            </div>
+            
+            <div class="award-item">
+                <div class="award-title">Best Graduating Student</div>
+                <div class="award-org">University of Lagos - Applied Physics</div>
+                <div class="award-year">2007</div>
+            </div>
+            
+            <div class="award-item">
+                <div class="award-title">Top 10 Geoscience Students Award</div>
+                <div class="award-org">Nigerian Association of Petroleum/NNPC</div>
+                <div class="award-year">2005-2007</div>
+            </div>
+        </div>
+
+        <!-- Professional Affiliations -->
+        <h2 style="text-align: center; margin: 50px 0 30px 0; color: #667eea;">Professional Affiliations</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Current Memberships</h3>
+                <ul>
+                    <li>Society of Exploration Geophysicists (SEG)</li>
+                    <li>American Physical Society (APS)</li>
+                    <li>Institute of Physics (IOP)</li>
+                    <li>National Society of Black Physicists (NABP)</li>
+                    <li>Ohio Academy of Science (OAS)</li>
+                    <li>European Association of Geoscientists and Engineers (EAGE)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // Typewriter effect data
+        const interestedItems = [
+            "Applied Physics",
+            "Geophysics", 
+            "DNA Nanotechnology",
+            "Business Analysis",
+            "Data Science",
+            "Rock Physics",
+            "Quantum Computing",
+            "Oil & Gas Exploration"
+        ];
+
+        const skillsItems = [
+            "Python Programming",
+            "MATLAB Modeling",
+            "SAP Data Management",
+            "Seismic Analysis",
+            "DNA Origami Design",
+            "Statistical Analysis",
+            "Project Management",
+            "Scientific Research"
+        ];
+
+        const awardsItems = [
+            "APS Travel Award 2024",
+            "Graduate Research Award",
+            "Best Graduating Student 2007", 
+            "NDDC Scholarship Recipient",
+            "Top 10 Geoscience Students",
+            "Published in Scientific Reports"
+        ];
+
+        let interestedIndex = 0;
+        let skillsIndex = 0;
+        let awardsIndex = 0;
+        let isDeleting = false;
+        let currentText = '';
+        let currentSection = 'interested';
+        let typewriterRunning = false;
+
+        function typeWriter() {
+            if (!typewriterRunning) return;
+            
+            const interestedElement = document.getElementById('interested-text');
+            const skillsElement = document.getElementById('skills-text');
+            const awardsElement = document.getElementById('awards-text');
+
+            if (!interestedElement || !skillsElement || !awardsElement) {
+                setTimeout(typeWriter, 1000);
+                return;
+            }
+
+            let targetArray, targetIndex, targetElement;
+            
+            if (currentSection === 'interested') {
+                targetArray = interestedItems;
+                targetIndex = interestedIndex;
+                targetElement = interestedElement;
+            } else if (currentSection === 'skills') {
+                targetArray = skillsItems;
+                targetIndex = skillsIndex;
+                targetElement = skillsElement;
+            } else {
+                targetArray = awardsItems;
+                targetIndex = awardsIndex;
+                targetElement = awardsElement;
+            }
+
+            const targetText = targetArray[targetIndex];
+
+            if (isDeleting) {
+                currentText = targetText.substring(0, currentText.length - 1);
+            } else {
+                currentText = targetText.substring(0, currentText.length + 1);
+            }
+
+            targetElement.textContent = currentText;
+
+            let typeSpeed = isDeleting ? 30 : 60;
+
+            if (!isDeleting && currentText === targetText) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && currentText === '') {
+                isDeleting = false;
+                
+                if (currentSection === 'interested') {
+                    interestedIndex = (interestedIndex + 1) % interestedItems.length;
+                    currentSection = 'skills';
+                } else if (currentSection === 'skills') {
+                    skillsIndex = (skillsIndex + 1) % skillsItems.length;
+                    currentSection = 'awards';
+                } else {
+                    awardsIndex = (awardsIndex + 1) % awardsItems.length;
+                    currentSection = 'interested';
+                }
+                
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Handle active nav link highlighting based on scroll position
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            const scrollPosition = window.scrollY + 100; // Offset for fixed navbar
+            
+            // Check which section is currently in view
+            sections.forEach(section => {
+                const offsetTop = section.offsetTop;
+                const offsetHeight = section.offsetHeight;
+                
+                if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                    currentSection = section.id;
+                }
+            });
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Control typewriter based on section
+            if (currentSection === 'home') {
+                if (!typewriterRunning) {
+                    typewriterRunning = true;
+                    setTimeout(typeWriter, 500);
+                }
+            } else {
+                typewriterRunning = false;
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, initializing navigation...');
+            
+            // Start typewriter effect for home page
+            typewriterRunning = true;
+            setTimeout(typeWriter, 1000);
+
+            // Add scroll listener to update active nav links
+            window.addEventListener('scroll', updateActiveNavLink);
+            
+            // Initial call to set correct active link
+            updateActiveNavLink();
+
+            // Mouse parallax effect
+            document.addEventListener('mousemove', function(e) {
+                const particles = document.querySelectorAll('.particle');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                particles.forEach((particle, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const moveX = (x - 0.5) * speed * 20;
+                    const moveY = (y - 0.5) * speed * 20;
+                    particle.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                });
+            });
+
+            console.log('Navigation initialization complete');
+        });
+    </script>
+</body>
+</html>
